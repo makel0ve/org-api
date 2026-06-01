@@ -59,7 +59,7 @@ class DepartmentRepository:
         children = await self.get_children(department.id)
         for child in children:
             await self.delete(child)
-            
+
         await self.session.delete(department)
         await self.session.flush()
 

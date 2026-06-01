@@ -71,9 +71,11 @@ async def test_update_department_self_parent(client, mock_db):
 
 @pytest.mark.asyncio
 async def test_delete_department_reassign_without_target(client, mock_db):
-    mock_db.execute = AsyncMock(return_value=AsyncMock(scalar_one_or_none=lambda: make_department()))
+    mock_db.execute = AsyncMock(
+        return_value=AsyncMock(scalar_one_or_none=lambda: make_department())
+    )
     response = client.delete("/api/v1/departments/1?mode=reassign")
-    
+
     assert response.status_code == 400
 
 

@@ -27,8 +27,14 @@ class Department(Base):
         "Department", back_populates="children", remote_side="Department.id"
     )
     children: Mapped[list["Department"]] = relationship(
-        "Department", back_populates="parent", cascade="all, delete-orphan", lazy="noload"
+        "Department",
+        back_populates="parent",
+        cascade="all, delete-orphan",
+        lazy="noload",
     )
     employees: Mapped[list["Employee"]] = relationship(
-        "Employee", back_populates="department", cascade="all, delete-orphan", lazy="noload"
+        "Employee",
+        back_populates="department",
+        cascade="all, delete-orphan",
+        lazy="noload",
     )

@@ -4,7 +4,7 @@
 Файл был написан не лично, а при помощи ИИ
 
 Для запуска рекомендуется использовать команду:
-docker exec -it org_api_app sh -c "PYTHONPATH=/code python seed/seed.py" 
+docker exec -it org_api_app sh -c "PYTHONPATH=/code python seed/seed.py"
 """
 
 import asyncio
@@ -38,44 +38,96 @@ async def seed(session: AsyncSession) -> None:
     await session.flush()
 
     # Сотрудники IT
-    session.add_all([
-        Employee(department_id=it.id, full_name="Алексей Смирнов", position="CTO"),
-    ])
+    session.add_all(
+        [
+            Employee(department_id=it.id, full_name="Алексей Смирнов", position="CTO"),
+        ]
+    )
 
     # Сотрудники Backend
-    session.add_all([
-        Employee(department_id=backend.id, full_name="Иван Иванов", position="Team Lead"),
-        Employee(department_id=backend.id, full_name="Мария Петрова", position="Senior Developer"),
-    ])
+    session.add_all(
+        [
+            Employee(
+                department_id=backend.id, full_name="Иван Иванов", position="Team Lead"
+            ),
+            Employee(
+                department_id=backend.id,
+                full_name="Мария Петрова",
+                position="Senior Developer",
+            ),
+        ]
+    )
 
     # Сотрудники Python
-    session.add_all([
-        Employee(department_id=python_team.id, full_name="Дмитрий Козлов", position="Middle Developer"),
-        Employee(department_id=python_team.id, full_name="Анна Сидорова", position="Junior Developer"),
-    ])
+    session.add_all(
+        [
+            Employee(
+                department_id=python_team.id,
+                full_name="Дмитрий Козлов",
+                position="Middle Developer",
+            ),
+            Employee(
+                department_id=python_team.id,
+                full_name="Анна Сидорова",
+                position="Junior Developer",
+            ),
+        ]
+    )
 
     # Сотрудники Frontend
-    session.add_all([
-        Employee(department_id=frontend.id, full_name="Сергей Новиков", position="Team Lead"),
-        Employee(department_id=frontend.id, full_name="Екатерина Морозова", position="Middle Developer"),
-    ])
+    session.add_all(
+        [
+            Employee(
+                department_id=frontend.id,
+                full_name="Сергей Новиков",
+                position="Team Lead",
+            ),
+            Employee(
+                department_id=frontend.id,
+                full_name="Екатерина Морозова",
+                position="Middle Developer",
+            ),
+        ]
+    )
 
     # Сотрудники DevOps
-    session.add_all([
-        Employee(department_id=devops.id, full_name="Павел Волков", position="DevOps Engineer"),
-    ])
+    session.add_all(
+        [
+            Employee(
+                department_id=devops.id,
+                full_name="Павел Волков",
+                position="DevOps Engineer",
+            ),
+        ]
+    )
 
     # Сотрудники HR
-    session.add_all([
-        Employee(department_id=hr.id, full_name="Ольга Федорова", position="HR Manager"),
-        Employee(department_id=hr.id, full_name="Наталья Михайлова", position="HR Specialist"),
-    ])
+    session.add_all(
+        [
+            Employee(
+                department_id=hr.id, full_name="Ольга Федорова", position="HR Manager"
+            ),
+            Employee(
+                department_id=hr.id,
+                full_name="Наталья Михайлова",
+                position="HR Specialist",
+            ),
+        ]
+    )
 
     # Сотрудники Finance
-    session.add_all([
-        Employee(department_id=finance.id, full_name="Андрей Белов", position="CFO"),
-        Employee(department_id=finance.id, full_name="Юлия Тихонова", position="Accountant"),
-    ])
+    session.add_all(
+        [
+            Employee(
+                department_id=finance.id, full_name="Андрей Белов", position="CFO"
+            ),
+            Employee(
+                department_id=finance.id,
+                full_name="Юлия Тихонова",
+                position="Accountant",
+            ),
+        ]
+    )
 
     await session.commit()
     print("✅ База заполнена тестовыми данными")
